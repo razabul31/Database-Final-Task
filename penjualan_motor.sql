@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 26, 2022 at 10:04 AM
+-- Generation Time: Jul 27, 2022 at 12:08 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -101,14 +101,14 @@ CREATE TABLE `petugas` (
   `IdPetugas` varchar(9) NOT NULL,
   `NamaPetugas` varchar(17) DEFAULT NULL,
   `AlamatPetugas` varchar(30) DEFAULT NULL,
-  `password` varchar(30) NOT NULL
+  `Password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `petugas`
 --
 
-INSERT INTO `petugas` (`IdPetugas`, `NamaPetugas`, `AlamatPetugas`, `password`) VALUES
+INSERT INTO `petugas` (`IdPetugas`, `NamaPetugas`, `AlamatPetugas`, `Password`) VALUES
 ('AC0015801', 'David Sudiana', 'Jl. Srigunting Raya', ''),
 ('AC0015802', 'Udin Supriatna', 'Jl. A H Nasution', ''),
 ('AC0015805', 'Hartono ', 'Jl. Melati No. 2', ''),

@@ -6,8 +6,12 @@ require 'layout-sidebar.php';
 ?>
 
 <div class="container-fluid">
+    <div class="card">
+        <div class="card-body collapse show">
+            <h3 class="page-title text-truncate text-primary font-weight-medium mb-1"><?= $title; ?></h3>
+        </div>
+    </div>
 
-    <!-- basic table -->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -19,7 +23,7 @@ require 'layout-sidebar.php';
                     </h4>
                     <br>
                     <div class="table-responsive">
-                        <table id="table" class="table">
+                        <table id="table" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -37,7 +41,7 @@ require 'layout-sidebar.php';
                                     <td>Edinburgh</td>
                                     <td>61</td>
                                     <td>2011/04/25</td>
-                                    <td>$320,800</td>
+                                    <td>Rp 320.800</td>
                                 </tr>
                             </tbody>
                         </table>

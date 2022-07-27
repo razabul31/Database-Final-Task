@@ -19,6 +19,7 @@
     <link href="../assets/dist/css/style.min.css" rel="stylesheet">
     <!-- This page plugin CSS -->
     <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="../assets/extra-libs/datatables.net-bs4/css/buttons.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body>

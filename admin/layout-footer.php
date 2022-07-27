@@ -12,10 +12,7 @@
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- End Wrapper -->
+
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
@@ -40,7 +37,14 @@
 <script src="../assets/dist/js/pages/dashboards/dashboard1.min.js"></script>
 <!--This page plugins -->
 <script src="../assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../dist/js/pages/datatable/datatable-basic.init.js"></script>
+<script src="../assets/dist/js/pages/datatable/datatable-basic.init.js"></script>
+
+<script src="../assets/extra-libs/datatables.net/js/dataTables.buttons.min.js"></script>
+<script src="../assets/extra-libs/datatables.net/js/jszip.min.js"></script>
+<script src="../assets/extra-libs/datatables.net/js/pdfmake.min.js"></script>
+<script src="../assets/extra-libs/datatables.net/js/vfs_fonts.js"></script>
+<script src="../assets/extra-libs/datatables.net/js/buttons.html5.min.js"></script>
+<script src="../assets/extra-libs/datatables.net/js/buttons.print.min.js"></script>
 
 <!-- Top modal content -->
 <div id="logoutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -64,13 +68,9 @@
 <script>
     $(document).ready(function() {
         var t = $('#table').DataTable({
-            "columnDefs": [{
-                "searchable": false,
-                "orderable": false,
-                "targets": 0
-            }],
-            "order": [
-                [1, 'asc']
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf'
             ],
             "language": {
                 "sProcessing": "Sedang memproses ...",
@@ -86,9 +86,20 @@
                     "sNext": "Selanjutnya",
                     "sLast": "Terakhir"
                 }
-            }
+            },
         });
     });
+
+    function change() {
+        var x = document.getElementById('password').type;
+        if (x == 'password') {
+            document.getElementById('password').type = 'text';
+            document.getElementById('eye-button').innerHTML = `<i class="fas fa-fw fa-eye-slash" title="sembunyikan password"></i>`;
+        } else {
+            document.getElementById('password').type = 'password';
+            document.getElementById('eye-button').innerHTML = `<i class="fas fa-fw fa-eye" title="tampilkan password"></i>`;
+        }
+    }
 </script>
 
 </body>

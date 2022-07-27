@@ -6,8 +6,12 @@ require 'layout-sidebar.php';
 ?>
 
 <div class="container-fluid">
+    <div class="card">
+        <div class="card-body collapse show">
+            <h3 class="page-title text-truncate text-primary font-weight-medium"><?= $title; ?></h3>
+        </div>
+    </div>
 
-    <!-- basic table -->
     <div class="row">
         <div class="col-12">
             <div class="card">

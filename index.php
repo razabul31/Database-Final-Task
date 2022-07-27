@@ -54,6 +54,10 @@
                                         } else if ($msg == 5) {
                                         ?>
                                             <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Anda berhasil logout!</div>
+                                        <?php
+                                        } else if ($msg == 6) {
+                                        ?>
+                                            <div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i> Silahkan login terlebih dahulu!</div>
                                     <?php
                                         }
                                     }

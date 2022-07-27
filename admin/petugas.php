@@ -1,44 +1,79 @@
 <?php
 $title = 'Petugas';
+require 'functions.php';
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
+
+$data = get_data($conn, "SELECT * FROM petugas");
 ?>
-
 <div class="container-fluid">
+    <div class="card">
+        <div class="card-body collapse show">
+            <h3 class="page-title text-truncate text-primary font-weight-medium mb-1"><?= $title; ?></h3>
+        </div>
+    </div>
 
-    <!-- basic table -->
+    <?php if (isset($_GET['msg'])) {
+        $msg = $_GET['msg'];
+        if ($msg == 1) {
+    ?>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal menambahkan data! ID Petugas sudah tersedia.</div>
+        <?php
+        } else if ($msg == 2) {
+        ?>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Error eksekusi.</div>
+        <?php
+        } else if ($msg == 3) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data petugas berhasil ditambahkan!</div>
+        <?php
+        } else if ($msg == 4) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data petugas berhasil diperbarui!</div>
+        <?php
+        } else if ($msg == 5) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data petugas berhasil dihapus!</div>
+    <?php
+        }
+    }
+    ?>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
-                        <button type="button" class="btn btn-outline-success btn-rounded">
+                        <a href="petugas-tambah.php" class="btn btn-outline-success btn-rounded">
                             <i class="fas fa-plus"></i> Tambah Petugas
-                        </button>
+                        </a>
                     </h4>
                     <br>
                     <div class="table-responsive">
                         <table id="table" class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>#</th>
+                                    <th>ID Petugas</th>
+                                    <th>Nama</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
+                                <?php $no = 1;
+                                foreach ($data as $petugas) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $petugas['IdPetugas']; ?></td>
+                                        <td><?= $petugas['NamaPetugas']; ?></td>
+                                        <td><?= $petugas['AlamatPetugas']; ?></td>
+                                        <td>
+                                            <a href="petugas-ubah.php?id=<?= $petugas['IdPetugas']; ?>" title="Edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="petugas-hapus.php?id=<?= $petugas['IdPetugas']; ?>" title="Hapus" class="btn btn-danger" onclick="return confirm('Hapus data <?= $petugas['IdPetugas']; ?> ?');"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

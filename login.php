@@ -11,7 +11,7 @@ $data = mysqli_fetch_assoc($row);
 if ($db->errno == 0) {
     if (isset($_POST["btn_login"])) {
         if ($data) {
-            if ($password == $data['password']) {
+            if ($password == $data['Password']) {
                 $_SESSION['id_petugas'] = $data['IdPetugas'];
                 $_SESSION['nm_petugas'] = $data['NamaPetugas'];
                 header('location:admin/index.php');

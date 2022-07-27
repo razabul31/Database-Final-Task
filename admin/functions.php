@@ -2,6 +2,11 @@
 session_start();
 define("DEVELOPMENT", TRUE);
 
+if ($_SESSION) {
+} else {
+    header('location:../index.php?msg=6');
+}
+
 function dbConnect()
 {
     $db = new mysqli("localhost", "root", "", "penjualan_motor");
