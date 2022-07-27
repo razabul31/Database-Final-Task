@@ -1,6 +1,6 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "penjualan_motor");
-$mysqli->select_db("penjualan_motor");
+$mysqli = new mysqli("localhost", "root", "", "penjualan_motor2");
+$mysqli->select_db("penjualan_motor2");
 $mysqli->query("SET NAMES 'utf8'");
 
 //get table list

@@ -39,6 +39,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link" href="pemilik.php" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                                <span class="hide-menu">pemilik</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="database.php" aria-expanded="false">
                                 <i class="fas fa-database"></i>
                                 <span class="hide-menu">Database</span>
