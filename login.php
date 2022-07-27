@@ -1,6 +1,6 @@
 <?php
 session_start();
-$db = mysqli_connect('localhost', 'root', '', 'penjualan_motor2');
+$db = mysqli_connect('localhost', 'root', '', 'penjualan_motor');
 
 $username = $db->escape_string($_POST['username']);
 $password = $db->escape_string($_POST['password']);
