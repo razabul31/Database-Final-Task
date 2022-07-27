@@ -9,7 +9,7 @@ if ($_SESSION) {
 
 function dbConnect()
 {
-    $db = new mysqli("localhost", "root", "", "penjualan_motor2");
+    $db = new mysqli("localhost", "root", "", "penjualan_motor");
     return $db;
 }
 
