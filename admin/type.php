@@ -1,11 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 $title = 'TYPE MOTOR YANG TERSEDIA';
 require 'functions.php';
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
 
-$data = get_data($conn, "SELECT * FROM tipe ");
+$data = get_data($conn, "SELECT * FROM type ");
 ?>
 <div class="container-fluid">
     <div class="card">

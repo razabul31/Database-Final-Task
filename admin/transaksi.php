@@ -3,6 +3,11 @@ $title = 'Transaksi';
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
+
+$data = get_data($conn, "SELECT `faktur`.`NoFaktur`, Tgl, NamaPemilik, NamaVarian, NamaPetugas FROM faktur
+            JOIN pemilik ON `faktur`.`NoKTP` = `pemilik`.`NoKTP`
+            JOIN motor ON `faktur`.`NoRangka` = `motor`.`NoRangka`
+            JOIN petugas ON `faktur`.`IdPetugas` = `petugas`.`IdPetugas`");
 ?>
 
 <div class="container-fluid">
@@ -11,38 +16,75 @@ require 'layout-sidebar.php';
             <h3 class="page-title text-truncate text-primary font-weight-medium mb-1"><?= $title; ?></h3>
         </div>
     </div>
-
+    <?php if (isset($_GET['msg'])) {
+        $msg = $_GET['msg'];
+        if ($msg == 1) {
+    ?>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal menambahkan data! No. Faktur sudah tersedia.</div>
+        <?php
+        } else if ($msg == 2) {
+        ?>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Error eksekusi.</div>
+        <?php
+        } else if ($msg == 3) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data transaksi berhasil ditambahkan!</div>
+        <?php
+        } else if ($msg == 4) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data transaksi berhasil diperbarui!</div>
+        <?php
+        } else if ($msg == 5) {
+        ?>
+            <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data transaksi berhasil dihapus!</div>
+        <?php
+        } else {
+        ?>
+            <div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i><?= $_GET['msg']; ?></div>
+    <?php
+        }
+    }
+    ?>
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
-                        <button type="button" class="btn btn-outline-success btn-rounded">
+                        <a href="transaksi-tambah.php" class="btn btn-outline-success btn-rounded">
                             <i class="fas fa-plus"></i> Tambah Transaksi
-                        </button>
+                        </a>
+                        <button id="btn-refresh" class="btn btn-primary box-title" title="Refresh Data"><i class="fas fa-sync-alt"></i></button>
                     </h4>
                     <br>
                     <div class="table-responsive">
-                        <table id="table" class="table table-bordered">
+                        <table id="table" class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>#</th>
+                                    <th>No. Faktur</th>
+                                    <th>Tanggal</th>
+                                    <th>Konsumen</th>
+                                    <th>Sepeda Motor</th>
+                                    <th>Petugas</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>Rp 320.800</td>
-                                </tr>
+                                <?php $no = 1;
+                                foreach ($data as $transaksi) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $transaksi['NoFaktur']; ?></td>
+                                        <td><?= $transaksi['Tgl']; ?></td>
+                                        <td><?= $transaksi['NamaPemilik']; ?></td>
+                                        <td><?= $transaksi['NamaVarian']; ?></td>
+                                        <td><?= $transaksi['NamaPetugas']; ?></td>
+                                        <td>
+                                            <a href="transaksi-ubah.php?id=<?= $transaksi['NoFaktur']; ?>" title="Edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="transaksi-hapus.php?id=<?= $transaksi['NoFaktur']; ?>" title="Hapus" class="btn btn-danger" onclick="return confirm('Hapus data <?= $transaksi['NoFaktur']; ?> ?');"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

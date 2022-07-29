@@ -22,26 +22,26 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="laporan.php" aria-expanded="false">
-                                <i class="fas fa-file"></i>
+                                <i class="fas fa-copy"></i>
                                 <span class="hide-menu">Laporan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="Type.php" aria-expanded="false">
-                                <i class="fas fa-file"></i>
+                                <i class="fas fa-file-alt"></i>
                                 <span class="hide-menu">Type</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="petugas.php" aria-expanded="false">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user-circle"></i>
                                 <span class="hide-menu">Petugas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="pemilik.php" aria-expanded="false">
-                                <i class="fas fa-user"></i>
-                                <span class="hide-menu">pemilik</span>
+                                <i class="fas fa-users"></i>
+                                <span class="hide-menu">Konsumen</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

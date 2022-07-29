@@ -1,8 +1,9 @@
+<?php include_once("functions.php"); ?>
 <?php 
 if (!isset($_SESSION["id_petugas"]))
 header("Location: index.php?error=4");
 ?>
-<?php include_once("functions.php"); ?>
+
       
       <header class="topbar" data-navbarbg="skin6">
            <nav class="navbar top-navbar navbar-expand-md">

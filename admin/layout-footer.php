@@ -79,6 +79,7 @@
                 "info": "Menampilkan _PAGE_ halaman dari _PAGES_ halaman",
                 "infoEmpty": "Tidak ada data yang tersedia",
                 "infoFiltered": "(difilter dari _MAX_ total data)",
+                "zeroRecords": "Tidak ditemukan data yang cocok",
                 "sSearch": "Cari",
                 "oPaginate": {
                     "sFirst": "Pertama",
@@ -88,6 +89,22 @@
                 }
             },
         });
+    });
+
+    $('#btn-refresh').on('click', () => {
+        $('#ic-refresh').addClass('fa-spin');
+        var oldURL = window.location.href;
+        var index = 0;
+        var newURL = oldURL;
+        index = oldURL.indexOf('?');
+        if (index == -1) {
+            window.location = window.location.href;
+
+        }
+        if (index != -1) {
+            window.location = oldURL.substring(0, index)
+        }
+
     });
 
     function change() {
@@ -100,6 +117,32 @@
             document.getElementById('eye-button').innerHTML = `<i class="fas fa-fw fa-eye" title="tampilkan password"></i>`;
         }
     }
+</script>
+
+<!-- Ajax for showing Harga from selected Varian -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#varian").change(function() {
+            var Varian = $(this).val();
+            $.ajax({
+                url: 'transaksi-harga.php',
+                type: 'post',
+                data: {
+                    varian: Varian
+                },
+                async: true,
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    $("#harga").empty();
+                    for (var i = 0; i < len; i++) {
+                        var harga = response[i]['harga'];
+                        $("#harga").append("<option value='" + harga + "'> Rp " + harga + "</option>");
+                    }
+                }
+            });
+        });
+    });
 </script>
 
 </body>
