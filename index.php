@@ -5,9 +5,7 @@
     <title>AHM | Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-
     <!-- Custom CSS -->
     <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -30,6 +28,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
+                                        <img src="assets/images/ahm.png" alt="logo" width="200" class="mb-1">
                                         <p class="h4 text-dark">Sistem Penjualan Sepeda Motor <br> AHM</p>
                                     </div>
 
@@ -67,12 +66,12 @@
                                     <form class="user" method="post" action="login.php">
                                         <div class="form-group">
                                             <i class="fas fa-user pl-3"> Username</i>
-                                            <input type="text" class="form-control form-control-user" name="username" placeholder="Masukkan Username" value="admin">
+                                            <input type="text" class="form-control form-control-user" name="username" placeholder="Masukkan Username">
                                         </div>
                                         <div class="form-group">
                                             <i class="fas fa-key pl-3"> Password</i>
                                             <div class="input-group">
-                                                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan password" value="admin">
+                                                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan password">
                                                 <div class="input-group-append">
                                                     <span id="eye-button" onclick="change()" class="input-group-text">
                                                         <i class="fas fa-fw fa-eye" title="tampilkan password"></i>
