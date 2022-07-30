@@ -47,6 +47,7 @@ $data = get_data($conn, "SELECT * FROM petugas");
                         <a href="petugas-tambah.php" class="btn btn-outline-success btn-rounded">
                             <i class="fas fa-plus"></i> Tambah Petugas
                         </a>
+                        <button id="btn-refresh" class="btn btn-primary btn-rounded" title="Refresh Data"><i class="fas fa-sync-alt"></i></button>
                     </h4>
                     <br>
                     <div class="table-responsive">
@@ -57,7 +58,7 @@ $data = get_data($conn, "SELECT * FROM petugas");
                                     <th>ID Petugas</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
-                                    <th>Aksi</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

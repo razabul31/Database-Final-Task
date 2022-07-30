@@ -1,5 +1,5 @@
 <?php
-$title = 'Ubah Data Type';
+$title = 'Ubah Data Barang';
 require 'functions.php';
 $db = dbConnect();
 $IdType = $_GET['id'];
@@ -42,7 +42,7 @@ require 'layout-sidebar.php';
                 <div class="card-body font-weight">
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="">ID TYPE</label>
+                            <label for="">ID Typ</label>
                             <input type="text" name="IdType" class="form-control text-uppercase" value="<?= $type['IdType']; ?>" readonly>
                         </div>
                         <div class="form-group">
@@ -60,11 +60,11 @@ require 'layout-sidebar.php';
 
                         <div class="form-group">
                             <label for="">Tahun Pembuatan</label>
-                            <input type="text" name="pembuatan" class="form-control text-capitalize" maxlength="30" value="<?= $type['TahunPembuatan']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="pembuatan" class="form-control text-capitalize" maxlength="30" value="<?= $type['TahunPembuatan']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Harga</label>
-                            <input type="text" name="harga" class="form-control text-capitalize" maxlength="30" value="<?= $type['Harga']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="harga" class="form-control text-capitalize" maxlength="30" value="<?= $type['Harga']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
 
 

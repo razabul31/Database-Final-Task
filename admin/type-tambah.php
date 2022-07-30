@@ -1,5 +1,5 @@
 <?php
-$title = 'Tambah Type';
+$title = 'Tambah Barang';
 require 'functions.php';
 $db = dbConnect();
 
@@ -13,10 +13,10 @@ if (isset($_POST['btn_simpan'])) {
         $harga = $db->escape_string($_POST['harga']);
 
 
-        $query = "SELECT * FROM tipe WHERE IdType = '$IdType'";
+        $query = "SELECT * FROM type WHERE IdType = '$IdType'";
         $data = row_array($conn, $query);
         if ($data['NoKTP'] == 0) {
-            $query = "INSERT INTO tipe (IdType,NoMesin,IsiSilinder,Warna,TahunPembuatan,Harga) VALUES (' $IdType',' $nmrMesin',' $isiSilinder','$warna','$thnPembuatan','$harga')";
+            $query = "INSERT INTO type (IdType,NoMesin,IsiSilinder,Warna,TahunPembuatan,Harga) VALUES (' $IdType',' $nmrMesin',' $isiSilinder','$warna','$thnPembuatan','$harga')";
             $execute = execute($conn, $query);
             if ($execute == 1) {
                 header('location:type.php?msg=3');
@@ -47,29 +47,36 @@ require 'layout-sidebar.php';
                 <div class="card-body font-weight">
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="">ID TYPE</label>
-                            <input type="text" name="IdType" class="form-control text-uppercase">
+                            <label for="">ID Type</label>
+                            <input type="text" name="IdType" maxlength="14" class="form-control" required oninvalid="this.setCustomValidity('Silahkan masukkan id type')" oninput="setCustomValidity('')">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama Varian</label>
+                            <input type="text" name="nm_varian" maxlength="20" class="form-control" required oninvalid="this.setCustomValidity('Silahkan masukkan nama varian')" oninput="setCustomValidity('')">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Rangka</label>
+                            <input type="text" name="no_rangka" class="form-control" maxlength="18" required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">No Mesin</label>
-                            <input type="text" name="mesin" class="form-control text-capitalize" maxlength="17" required oninvalid="this.setCustomValidity('Silahkan masukkan nama pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="mesin" class="form-control" maxlength="17" required oninvalid="this.setCustomValidity('Silahkan masukkan no. mesin')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Isi Silinder</label>
-                            <input type="text" name="silinder" class="form-control text-capitalize" maxlength="30" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="silinder" class="form-control" maxlength="5" required oninvalid="this.setCustomValidity('Silahkan masukkan isi silinder')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Warna</label>
-                            <input type="text" name="warna" class="form-control text-capitalize" maxlength="30" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="warna" class="form-control" maxlength="9" required oninvalid="this.setCustomValidity('Silahkan masukkan warna kendaraan')" oninput="setCustomValidity('')">
                         </div>
-
                         <div class="form-group">
                             <label for="">Tahun Pembuatan</label>
-                            <input type="text" name="pembuatan" class="form-control text-capitalize" maxlength="30" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="pembuatan" class="form-control" min="1" max="9999" required oninvalid="this.setCustomValidity('Silahkan masukkan tahun pembuatan')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Harga</label>
-                            <input type="text" name="harga" class="form-control text-capitalize" maxlength="30" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="harga" class="form-control" min="1" required oninvalid="this.setCustomValidity('Silahkan masukkan harga kendaraan')" oninput="setCustomValidity('')">
                         </div>
 
                         <a href="javascript:void(0)" onclick="window.history.back();" class="btn btn-rounded btn-dark mt-3">Kembali</a>

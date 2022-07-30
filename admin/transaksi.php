@@ -1,5 +1,6 @@
 <?php
 $title = 'Transaksi';
+require 'functions.php';
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
@@ -53,7 +54,7 @@ $data = get_data($conn, "SELECT `faktur`.`NoFaktur`, Tgl, NamaPemilik, NamaVaria
                         <a href="transaksi-tambah.php" class="btn btn-outline-success btn-rounded">
                             <i class="fas fa-plus"></i> Tambah Transaksi
                         </a>
-                        <button id="btn-refresh" class="btn btn-primary box-title" title="Refresh Data"><i class="fas fa-sync-alt"></i></button>
+                        <button id="btn-refresh" class="btn btn-primary btn-rounded" title="Refresh Data"><i class="fas fa-sync-alt"></i></button>
                     </h4>
                     <br>
                     <div class="table-responsive">
@@ -80,8 +81,9 @@ $data = get_data($conn, "SELECT `faktur`.`NoFaktur`, Tgl, NamaPemilik, NamaVaria
                                         <td><?= $transaksi['NamaVarian']; ?></td>
                                         <td><?= $transaksi['NamaPetugas']; ?></td>
                                         <td>
-                                            <a href="transaksi-ubah.php?id=<?= $transaksi['NoFaktur']; ?>" title="Edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="transaksi-hapus.php?id=<?= $transaksi['NoFaktur']; ?>" title="Hapus" class="btn btn-danger" onclick="return confirm('Hapus data <?= $transaksi['NoFaktur']; ?> ?');"><i class="fa fa-trash"></i></a>
+                                            <a href="transaksi-ekspor.php?id=<?= $transaksi['NoFaktur']; ?>" title="Cetak" class="btn btn-primary mt-1"><i class="fa fa-print"></i></a>
+                                            <a href="transaksi-ubah.php?id=<?= $transaksi['NoFaktur']; ?>" title="Edit" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
+                                            <a href="transaksi-hapus.php?id=<?= $transaksi['NoFaktur']; ?>" title="Hapus" class="btn btn-danger mt-1" onclick="return confirm('Hapus data <?= $transaksi['NoFaktur']; ?> ?');"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

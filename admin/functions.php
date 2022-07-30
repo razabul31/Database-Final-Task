@@ -1,6 +1,7 @@
 <?php
 session_start();
 define("DEVELOPMENT", TRUE);
+require '../assets/libs/fpdf184/fpdf.php';
 
 if ($_SESSION) {
 } else {

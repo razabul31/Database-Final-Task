@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 27, 2022 at 12:08 PM
+-- Generation Time: Jul 30, 2022 at 10:36 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -40,10 +40,11 @@ CREATE TABLE `faktur` (
 --
 
 INSERT INTO `faktur` (`NoFaktur`, `Tgl`, `NoKTP`, `NoRangka`, `IdPetugas`) VALUES
-('FK/ABI/623969/R', '2017-01-22', '321701059960001', 'MH1JEFK217FK1R2266', 'AC0015805'),
-('FK/ABI/823233/R', '2017-07-17', '321704140880001', 'MH1JEFK217FK1R3121', 'AC0015801'),
-('FK/ABI/823643/R', '2016-06-21', '321702140130001', 'MH1JEFK217FK1R4423', 'AC0015893'),
-('FK/ABI/823696/R', '2017-01-13', '321703120660001', 'MH1JEFK217FK1R3133', 'AC0015802');
+('FK/ABI/073007/R', '2022-07-30', '321704220660001', 'MH1JEFK217FK1R4423', 'admin'),
+('FK/ABI/623969/R', '2022-07-30', '321701059960001', 'MH1JEFK217FK1R2266', 'admin'),
+('FK/ABI/823233/R', '2022-07-30', '321704140880001', 'MH1JEFK217FK1R3121', 'admin'),
+('FK/ABI/823643/R', '2022-07-30', '321702140130001', 'MH1JEFK217FK1R4423', 'admin'),
+('FK/ABI/823696/R', '2022-07-30', '321703120660001', 'MH1JEFK217FK1R3133', 'admin');
 
 -- --------------------------------------------------------
 
@@ -85,11 +86,11 @@ CREATE TABLE `pemilik` (
 --
 
 INSERT INTO `pemilik` (`NoKTP`, `NamaPemilik`, `AlamatPemilik`) VALUES
-('321701059960001', 'RAKA DANARTA', 'Jl. Mangga No. 3'),
-('321702140130001', 'WAHYUDIN ANWAR', 'Kp Kara Mandalasari'),
-('321703120660001', 'AGUST WIYONO', 'Jl. Batununggal'),
-('321704140260001', 'JAJANG NURJAMAN', 'Kp. Cihuni Mandalasari'),
-('321704140880001', 'RITA JULI', 'Jl. Imam Bonjol Kel. Alai Gelo');
+('321701059960001', 'Raka Danarta', 'Jl. Mangga No. 3'),
+('321702140130001', 'Wahyudi Anwar', 'Kp Kara Mandalasari'),
+('321703120660001', 'Agust Wiyono', 'Jl. Batununggal'),
+('321704140880001', 'Rita Juli', 'Jl. Imam Bonjol Kel. Alai Gelo'),
+('321704220660001', ' Aldo', ' Jln. Sekaloa Tengah 100');
 
 -- --------------------------------------------------------
 
@@ -109,10 +110,11 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`IdPetugas`, `NamaPetugas`, `AlamatPetugas`, `Password`) VALUES
-('AC0015801', 'David Sudiana', 'Jl. Srigunting Raya', ''),
-('AC0015802', 'Udin Supriatna', 'Jl. A H Nasution', ''),
-('AC0015805', 'Hartono ', 'Jl. Melati No. 2', ''),
-('AC0015893', 'Tatang Supratna', 'Jln. Leuwipanjang Kebonlega II', ''),
+('AC001', 'David Sudiana', 'Jl. Srigunting Raya', 'AC001'),
+('AC002', 'Udin Supriatna', 'Jl. A H Nasution', 'AC002'),
+('AC003', 'Hartono ', 'Jl. Melati No. 2', 'AC003'),
+('AC004', 'Tatang Supratna', 'Jln. Leuwipanjang Kebonlega II', 'AC004'),
+('AC005', 'Aceng', 'Jln. Sekaloa Tengah 104', 'AC05'),
 ('admin', 'Admin', 'Jl. Jalan', 'admin');
 
 -- --------------------------------------------------------

@@ -27,9 +27,9 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="Type.php" aria-expanded="false">
-                                <i class="fas fa-file-alt"></i>
-                                <span class="hide-menu">Type</span>
+                            <a class="sidebar-link" href="type.php" aria-expanded="false">
+                                <i class="fas fa-box"></i>
+                                <span class="hide-menu">Barang</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

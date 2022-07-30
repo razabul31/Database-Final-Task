@@ -71,15 +71,15 @@ require 'layout-sidebar.php';
                         </div>
                         <div class="form-group">
                             <label for="">Nama Konsumen</label>
-                            <input type="text" name="nm_konsumen" class="form-control text-capitalize" maxlength="20" value="<?= $pemilik['NamaPemilik']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan Nama Konsumen')" oninput="setCustomValidity('')">
+                            <input type="text" name="nm_konsumen" class="form-control" maxlength="20" value="<?= $pemilik['NamaPemilik']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan Nama Konsumen')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">No. KTP</label>
-                            <input type="number" name="no_ktp" class="form-control" min="1" max="15" value="<?= $pemilik['NoKTP']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan No. KTP Konsumen')" oninput="setCustomValidity('')">
+                            <input type="number" name="no_ktp" class="form-control" min="1" value="<?= $pemilik['NoKTP']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan No. KTP Konsumen')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input type="text" name="alamat" class="form-control text-capitalize" maxlength="30" value="<?= $pemilik['AlamatPemilik']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan Alamat Konsumen')" oninput="setCustomValidity('')">
+                            <input type="text" name="alamat" class="form-control" maxlength="30" value="<?= $pemilik['AlamatPemilik']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan Alamat Konsumen')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Varian Sepeda Motor</label>
