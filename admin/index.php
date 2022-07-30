@@ -18,7 +18,13 @@ require 'layout-sidebar.php';
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">0</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">
+                                <?php
+                                $query = "SELECT COUNT(NoFaktur) FROM faktur";
+                                $result = row_array($conn, $query);
+                                ?>
+                                <?= $result['COUNT(NoFaktur)']; ?>
+                            </h2>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Transaksi</h6>
                     </div>
@@ -32,7 +38,13 @@ require 'layout-sidebar.php';
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">0</h2>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            <?php
+                            $query = "SELECT COUNT(NoRangka) FROM motor";
+                            $result = row_array($conn, $query);
+                            ?>
+                            <?= $result['COUNT(NoRangka)']; ?>
+                        </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Barang</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
@@ -46,7 +58,13 @@ require 'layout-sidebar.php';
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">0</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">
+                                <?php
+                                $query = "SELECT COUNT(IdPetugas) FROM petugas";
+                                $result = row_array($conn, $query);
+                                ?>
+                                <?= $result['COUNT(IdPetugas)']; ?>
+                            </h2>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Petugas</h6>
                     </div>
@@ -60,7 +78,15 @@ require 'layout-sidebar.php';
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup class="set-doller">Rp</sup>0</h2>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            <sup class="set-doller">Rp</sup>
+                            <?php
+                            $query = row_array($conn, "SELECT SUM(Harga) as total FROM faktur
+                                    JOIN motor ON `faktur`.`NoRangka` = `motor`.`NoRangka`
+                                    JOIN type ON `motor`.`IdType` = `type`.`IdType`");
+                            ?>
+                            <?= number_format($query['total']); ?>
+                        </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pemasukan</h6>
                     </div>
                 </div>

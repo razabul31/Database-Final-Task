@@ -1,5 +1,5 @@
 <?php
-$title = 'Ubah Transaksi';
+$title = 'Ubah Data Transaksi';
 require 'functions.php';
 $db = dbConnect();
 
