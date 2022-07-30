@@ -5,7 +5,7 @@ require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
 
-$data = get_data($conn, "SELECT `faktur`.`NoFaktur`, Tgl, NamaPemilik, NamaVarian, NamaPetugas FROM faktur
+$data = get_data($conn, "SELECT * FROM faktur
             JOIN pemilik ON `faktur`.`NoKTP` = `pemilik`.`NoKTP`
             JOIN motor ON `faktur`.`NoRangka` = `motor`.`NoRangka`
             JOIN petugas ON `faktur`.`IdPetugas` = `petugas`.`IdPetugas`");
@@ -83,7 +83,7 @@ $data = get_data($conn, "SELECT `faktur`.`NoFaktur`, Tgl, NamaPemilik, NamaVaria
                                         <td>
                                             <a href="transaksi-ekspor.php?id=<?= $transaksi['NoFaktur']; ?>" title="Cetak" class="btn btn-primary mt-1"><i class="fa fa-print"></i></a>
                                             <a href="transaksi-ubah.php?id=<?= $transaksi['NoFaktur']; ?>" title="Edit" class="btn btn-warning mt-1"><i class="fa fa-edit"></i></a>
-                                            <a href="transaksi-hapus.php?id=<?= $transaksi['NoFaktur']; ?>" title="Hapus" class="btn btn-danger mt-1" onclick="return confirm('Hapus data <?= $transaksi['NoFaktur']; ?> ?');"><i class="fa fa-trash"></i></a>
+                                            <a href="transaksi-hapus.php?id=<?= $transaksi['NoKTP']; ?>" title="Hapus" class="btn btn-danger mt-1" onclick="return confirm('Hapus data <?= $transaksi['NoFaktur']; ?>?');"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
