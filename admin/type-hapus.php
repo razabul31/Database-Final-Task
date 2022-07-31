@@ -1,9 +1,12 @@
 <?php
 require 'functions.php';
-$IdType = $_GET['id'];
-$query = mysqli_query($conn, "DELETE FROM tipe WHERE IdType = '$IdType'");
 
-if ($query) {
+//fungsi menghapus
+
+$idType = $_GET['id'];
+$query = execute($conn, "DELETE FROM type WHERE IdType = '$idType'");
+if ($query == 1) {
+    $query2 = execute($conn, "DELETE FROM motor WHERE IdType = '$idType'");
     header('location:type.php?msg=5');
 } else {
     header('location:type.php?msg=2');
