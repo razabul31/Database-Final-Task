@@ -22,11 +22,11 @@ $pdf->Line(10, 20, 200, 20);
 $pdf->Ln(5);
 $pdf->SetFont('Arial', '', 11);
 
-$pdf->Cell(20, 10, 'No. Faktur', 0, 0,);
+$pdf->Cell(20, 10, 'No. Faktur', 0, 0);
 $pdf->Cell(120, 10, ' : ' . $data['NoFaktur'], 0, 0);
 $pdf->Cell(20, 10, 'Tanggal', 0, 0);
 $pdf->Cell(30, 10, ' : ' . $data['Tgl'], 0, 1);
-$pdf->Cell(20, 10, 'Petugas', 0, 0,);
+$pdf->Cell(20, 10, 'Petugas', 0, 0);
 $pdf->Cell(90, 10, ' : ' . $data['NamaPetugas'], 0, 0);
 
 $pdf->Ln(20);
@@ -55,10 +55,10 @@ $pdf->Cell(40, 10, 'Harga', 0, 0);
 $pdf->Cell(30, 10, ' : ' . $data['Harga'], 0, 1);
 
 $pdf->Ln(10);
-$pdf->Cell(150, 10, '', 0, 0,);
+$pdf->Cell(150, 10, '', 0, 0);
 $pdf->Cell(20, 10, 'Tanda Tangan', 0, 1);
 $pdf->Ln(20);
-$pdf->Cell(150, 10, '', 0, 0,);
+$pdf->Cell(150, 10, '', 0, 0);
 $pdf->Cell(20, 10, $data['NamaPetugas'], 0, 1);
 
 $pdf->Output('nota-transaksi-' . $data['NoFaktur'] . '.pdf', 'I');

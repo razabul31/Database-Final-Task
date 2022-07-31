@@ -25,7 +25,7 @@ $data = get_data($conn, "SELECT * FROM type
         <?php
         } else if ($msg == 2) {
         ?>
-            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Error eksekusi.</div>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Data ini terpakai pada Data Motor.</div>
         <?php
         } else if ($msg == 3) {
         ?>

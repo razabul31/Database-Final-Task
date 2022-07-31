@@ -22,7 +22,7 @@ $data = get_data($conn, "SELECT * FROM petugas");
         <?php
         } else if ($msg == 2) {
         ?>
-            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Error eksekusi.</div>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Data ini terpakai pada Data Transaksi.</div>
         <?php
         } else if ($msg == 3) {
         ?>
@@ -35,6 +35,10 @@ $data = get_data($conn, "SELECT * FROM petugas");
         } else if ($msg == 5) {
         ?>
             <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data petugas berhasil dihapus!</div>
+        <?php
+        } else {
+        ?>
+            <div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i><?= $_GET['msg']; ?></div>
     <?php
         }
     }

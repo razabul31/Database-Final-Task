@@ -45,15 +45,15 @@ require 'layout-sidebar.php';
                     <form action="" method="post">
                         <div class="form-group">
                             <label for="">ID Petugas</label>
-                            <input type="text" name="id_petugas" class="form-control text-uppercase" placeholder="Masukkan ID Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan id petugas')" oninput="setCustomValidity('')">
+                            <input type="text" name="id_petugas" class="form-control" placeholder="Masukkan ID Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan id petugas')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Nama Petugas</label>
-                            <input type="text" name="nm_petugas" class="form-control text-capitalize" maxlength="17" placeholder="Masukkan Nama Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan nama petugas')" oninput="setCustomValidity('')">
+                            <input type="text" name="nm_petugas" class="form-control" maxlength="17" placeholder="Masukkan Nama Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan nama petugas')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Alamat Petugas</label>
-                            <input type="text" name="alamat" class="form-control text-capitalize" maxlength="30" placeholder="Masukkan Alamat Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat petugas')" oninput="setCustomValidity('')">
+                            <input type="text" name="alamat" class="form-control" maxlength="30" placeholder="Masukkan Alamat Petugas" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat petugas')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
