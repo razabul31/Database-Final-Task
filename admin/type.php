@@ -7,6 +7,8 @@ require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
 
+//Menu Type
+
 $data = get_data($conn, "SELECT * FROM type
             JOIN motor ON `type`.`IdType` = `motor`.`IdType`");
 ?>
@@ -25,7 +27,7 @@ $data = get_data($conn, "SELECT * FROM type
         <?php
         } else if ($msg == 2) {
         ?>
-            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Data ini terpakai pada Data Motor.</div>
+            <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> Gagal! Error eksekusi.</div>
         <?php
         } else if ($msg == 3) {
         ?>
