@@ -4,7 +4,6 @@ require 'functions.php';
 $db = dbConnect();
 
 //Fungsi tambah data
-
 if (isset($_POST['btn_simpan'])) {
     if ($db->errno == 0) {
         $IdType = $db->escape_string($_POST['IdType']);
@@ -16,8 +15,7 @@ if (isset($_POST['btn_simpan'])) {
         $thnPembuatan = $db->escape_string($_POST['pembuatan']);
         $harga = $db->escape_string($_POST['harga']);
 
-
-        $query = "SELECT * FROM type WHERE IdType = '$IdType'";
+        $query = row_array($conn, "SELECT * FROM `type` WHERE IdType = '$IdType'");
         if ($query['IdType'] == 0) {
             $query = "INSERT INTO type (IdType,NoMesin,IsiSilinder,Warna,TahunPembuatan,Harga) 
                     VALUES (' $IdType',' $nmrMesin',' $isiSilinder','$warna','$thnPembuatan','$harga')";
@@ -31,7 +29,6 @@ if (isset($_POST['btn_simpan'])) {
                 } else {
                     header('location:type.php?msg=2');
                 }
-                
             } else {
                 header('location:type.php?msg=2');
             }
@@ -40,9 +37,9 @@ if (isset($_POST['btn_simpan'])) {
         }
     } else {
         header('location:type.php?msg=' . (DEVELOPMENT ? " : " . $db->connect_error : ""));
-        }
     }
-    
+}
+
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';

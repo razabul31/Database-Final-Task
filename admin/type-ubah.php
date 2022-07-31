@@ -1,5 +1,4 @@
 <?php
-
 //Fungsi ubah
 $title = 'Ubah Data Barang';
 require 'functions.php';
@@ -23,10 +22,10 @@ if (isset($_POST['btn_simpan'])) {
         $thnPembuatan = $db->escape_string($_POST['pembuatan']);
         $harga = $db->escape_string($_POST['harga']);
 
-        $query = "UPDATE type SET NoMesin='$nmrMesin', IsiSilinder='$isiSilinder', Warna='$warna',TahunPembuatan ='$thnPembuatan', Harga='$harga' WHERE IdType='$IdType'";
+        $query = "UPDATE type SET NoMesin='$nmrMesin', IsiSilinder='$isiSilinder', Warna='$warna', TahunPembuatan='$thnPembuatan', Harga='$harga' WHERE IdType='$IdType'";
         $execute = execute($conn, $query);
         if ($execute == 1) {
-            $query2 = "UPDATE motor SET NoRangka='$rangka', NamaVarian='$varian' WHERE NoRangka='$rangka'";
+            $query2 = "UPDATE motor SET NoRangka='$rangka', NamaVarian='$varian' WHERE NoRangka='$no_rangka'";
             $execute2 = execute($conn, $query2);
             if ($execute2 == 1) {
                 header('location:type.php?msg=4');
@@ -40,8 +39,6 @@ if (isset($_POST['btn_simpan'])) {
         header('location:type.php?msg=' . (DEVELOPMENT ? " : " . $db->connect_error : ""));
     }
 }
-
-
 
 require 'layout-header.php';
 require 'layout-topbar.php';
@@ -59,8 +56,8 @@ require 'layout-sidebar.php';
                 <div class="card-body font-weight">
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="">ID TypE</label>
-                            <input type="text" name="IdType" class="form-control text-uppercase" value="<?= $type['IdType']; ?>" readonly>
+                            <label for="">ID Type</label>
+                            <input type="text" name="IdType" class="form-control" value="<?= $type['IdType']; ?>" readonly>
                         </div>
 
                         <div class="form-group">
@@ -69,29 +66,29 @@ require 'layout-sidebar.php';
                         </div>
                         <div class="form-group">
                             <label for="">No Rangka</label>
-                            <input type="text" name="rangka" class="form-control" maxlength="18" value="<?= $motor['NoRangka']; ?>"required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
+                            <input type="text" name="rangka" class="form-control" maxlength="18" value="<?= $motor['NoRangka']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
                         </div>
 
                         <div class="form-group">
                             <label for="">No Mesin</label>
-                            <input type="text" name="mesin" class="form-control text-capitalize" maxlength="17" value="<?= $type['NoMesin']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan nama pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="mesin" class="form-control" maxlength="17" value="<?= $type['NoMesin']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan nama pemilik')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Isi Silinder</label>
-                            <input type="text" name="silinder" class="form-control text-capitalize" maxlength="30" value="<?= $type['IsiSilinder']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="silinder" class="form-control" maxlength="5" value="<?= $type['IsiSilinder']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Warna</label>
-                            <input type="text" name="warna" class="form-control text-capitalize" maxlength="30" value="<?= $type['Warna']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="text" name="warna" class="form-control" maxlength="9" value="<?= $type['Warna']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
 
                         <div class="form-group">
                             <label for="">Tahun Pembuatan</label>
-                            <input type="number" name="pembuatan" class="form-control text-capitalize" maxlength="30" value="<?= $type['TahunPembuatan']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="pembuatan" class="form-control" min="1" value="<?= $type['TahunPembuatan']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">Harga</label>
-                            <input type="number" name="harga" class="form-control text-capitalize" maxlength="30" value="<?= $type['Harga']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
+                            <input type="number" name="harga" class="form-control" min="1" value="<?= $type['Harga']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan alamat pemilik')" oninput="setCustomValidity('')">
                         </div>
 
 
