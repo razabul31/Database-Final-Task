@@ -3,9 +3,13 @@ $title = 'Tambah Barang';
 require 'functions.php';
 $db = dbConnect();
 
+//Fungsi tambah data
+
 if (isset($_POST['btn_simpan'])) {
     if ($db->errno == 0) {
         $IdType = $db->escape_string($_POST['IdType']);
+        $rangka = $db->escape_string($_POST['rangka']);
+        $varian = $db->escape_string($_POST['varian']);
         $nmrMesin = $db->escape_string($_POST['mesin']);
         $isiSilinder = $db->escape_string($_POST['silinder']);
         $warna = $db->escape_string($_POST['warna']);
@@ -14,12 +18,20 @@ if (isset($_POST['btn_simpan'])) {
 
 
         $query = "SELECT * FROM type WHERE IdType = '$IdType'";
-        $data = row_array($conn, $query);
-        if ($data['NoKTP'] == 0) {
-            $query = "INSERT INTO type (IdType,NoMesin,IsiSilinder,Warna,TahunPembuatan,Harga) VALUES (' $IdType',' $nmrMesin',' $isiSilinder','$warna','$thnPembuatan','$harga')";
+        if ($query['IdType'] == 0) {
+            $query = "INSERT INTO type (IdType,NoMesin,IsiSilinder,Warna,TahunPembuatan,Harga) 
+                    VALUES (' $IdType',' $nmrMesin',' $isiSilinder','$warna','$thnPembuatan','$harga')";
             $execute = execute($conn, $query);
             if ($execute == 1) {
-                header('location:type.php?msg=3');
+                $query2 = "INSERT INTO motor (NoRangka, IdType, NamaVarian) 
+                    VALUES ('$rangka',' $IdType',' $varian')";
+                $execute2 = execute($conn, $query2);
+                if ($execute2 == 1) {
+                    header('location:type.php?msg=3');
+                } else {
+                    header('location:type.php?msg=2');
+                }
+                
             } else {
                 header('location:type.php?msg=2');
             }
@@ -28,9 +40,9 @@ if (isset($_POST['btn_simpan'])) {
         }
     } else {
         header('location:type.php?msg=' . (DEVELOPMENT ? " : " . $db->connect_error : ""));
+        }
     }
-}
-
+    
 require 'layout-header.php';
 require 'layout-topbar.php';
 require 'layout-sidebar.php';
@@ -52,11 +64,11 @@ require 'layout-sidebar.php';
                         </div>
                         <div class="form-group">
                             <label for="">Nama Varian</label>
-                            <input type="text" name="nm_varian" maxlength="20" class="form-control" required oninvalid="this.setCustomValidity('Silahkan masukkan nama varian')" oninput="setCustomValidity('')">
+                            <input type="text" name="varian" maxlength="20" class="form-control" required oninvalid="this.setCustomValidity('Silahkan masukkan nama varian')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">No Rangka</label>
-                            <input type="text" name="no_rangka" class="form-control" maxlength="18" required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
+                            <input type="text" name="rangka" class="form-control" maxlength="18" required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="">No Mesin</label>
