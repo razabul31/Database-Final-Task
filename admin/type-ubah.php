@@ -1,23 +1,38 @@
 <?php
+
+//Fungsi ubah
 $title = 'Ubah Data Barang';
 require 'functions.php';
 $db = dbConnect();
-$IdType = $_GET['id'];
-$type = row_array($conn, "SELECT * FROM tipe WHERE IdType='$IdType'");
+$Id = $_GET['id'];
+$motor = row_array($conn, "SELECT * FROM motor WHERE IdType='$Id'");
+
+$no_rangka = $motor['NoRangka'];
+$type = row_array($conn, "SELECT * FROM motor
+        JOIN type ON `motor`.`IdType` = `type`.`IdType`
+        WHERE NoRangka = '$no_rangka'");
 
 if (isset($_POST['btn_simpan'])) {
     if ($db->errno == 0) {
         $IdType = $db->escape_string($_POST['IdType']);
+        $rangka = $db->escape_string($_POST['rangka']);
+        $varian = $db->escape_string($_POST['varian']);
         $nmrMesin = $db->escape_string($_POST['mesin']);
         $isiSilinder = $db->escape_string($_POST['silinder']);
         $warna = $db->escape_string($_POST['warna']);
         $thnPembuatan = $db->escape_string($_POST['pembuatan']);
         $harga = $db->escape_string($_POST['harga']);
 
-        $query = "UPDATE tipe SET IdType ='$IdType', NoMesin='$nmrMesin', IsiSilinder='$isiSilinder', Warna='$warna',TahunPembuatan ='$thnPembuatan', Harga='$harga' WHERE IdType='$IdType'";
+        $query = "UPDATE type SET NoMesin='$nmrMesin', IsiSilinder='$isiSilinder', Warna='$warna',TahunPembuatan ='$thnPembuatan', Harga='$harga' WHERE IdType='$IdType'";
         $execute = execute($conn, $query);
         if ($execute == 1) {
-            header('location:type.php?msg=4');
+            $query2 = "UPDATE motor SET NoRangka='$rangka', NamaVarian='$varian' WHERE NoRangka='$rangka'";
+            $execute2 = execute($conn, $query2);
+            if ($execute2 == 1) {
+                header('location:type.php?msg=4');
+            } else {
+                header('location:type.php?msg=2');
+            }
         } else {
             header('location:type.php?msg=2');
         }
@@ -25,6 +40,8 @@ if (isset($_POST['btn_simpan'])) {
         header('location:type.php?msg=' . (DEVELOPMENT ? " : " . $db->connect_error : ""));
     }
 }
+
+
 
 require 'layout-header.php';
 require 'layout-topbar.php';
@@ -42,9 +59,19 @@ require 'layout-sidebar.php';
                 <div class="card-body font-weight">
                     <form action="" method="post">
                         <div class="form-group">
-                            <label for="">ID Typ</label>
+                            <label for="">ID TypE</label>
                             <input type="text" name="IdType" class="form-control text-uppercase" value="<?= $type['IdType']; ?>" readonly>
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Nama Varian</label>
+                            <input type="text" name="varian" maxlength="20" class="form-control" value="<?= $motor['NamaVarian']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan nama varian')" oninput="setCustomValidity('')">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Rangka</label>
+                            <input type="text" name="rangka" class="form-control" maxlength="18" value="<?= $motor['NoRangka']; ?>"required oninvalid="this.setCustomValidity('Silahkan masukkan no. rangka')" oninput="setCustomValidity('')">
+                        </div>
+
                         <div class="form-group">
                             <label for="">No Mesin</label>
                             <input type="text" name="mesin" class="form-control text-capitalize" maxlength="17" value="<?= $type['NoMesin']; ?>" required oninvalid="this.setCustomValidity('Silahkan masukkan nama pemilik')" oninput="setCustomValidity('')">
