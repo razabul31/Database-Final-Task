@@ -8,7 +8,6 @@ require 'layout-topbar.php';
 require 'layout-sidebar.php';
 
 //Menu Type
-
 $data = get_data($conn, "SELECT * FROM type
             JOIN motor ON `type`.`IdType` = `motor`.`IdType`");
 ?>
@@ -40,6 +39,10 @@ $data = get_data($conn, "SELECT * FROM type
         } else if ($msg == 5) {
         ?>
             <div class="alert alert-success" role="alert"><i class="fas fa-info-circle"></i> Data Barang berhasil dihapus!</div>
+        <?php
+        } else {
+        ?>
+            <div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i><?= $_GET['msg']; ?></div>
     <?php
         }
     }
