@@ -1,9 +1,4 @@
 <?php include_once("functions.php"); ?>
-<?php 
-if (!isset($_SESSION["id_petugas"]))
-header("Location: index.php?error=4");
-?>
-
       
       <header class="topbar" data-navbarbg="skin6">
            <nav class="navbar top-navbar navbar-expand-md">
@@ -49,7 +44,7 @@ header("Location: index.php?error=4");
                            <img src="../assets/images/user.jpg" alt="user" class="rounded-circle" width="40">
                            <span class="ml-2 d-none d-lg-inline-block">
                                <span>Hello,</span>
-                               <span class="text-dark"><?php echo $_SESSION["nm_petugas"];?></span>
+                               <span class="text-dark"><?= $_SESSION["nm_petugas"]; ?></span>
                            </span>
                        </a>
                    </ul>
